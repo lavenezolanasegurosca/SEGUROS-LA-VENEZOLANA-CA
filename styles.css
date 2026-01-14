@@ -1,0 +1,259 @@
+/*
+|=================================================================================================|
+| --- 1. DEFINICIÓN DE VARIABLES ---
+*/
+:root {
+    /* --- MODO CLARO (Valores por defecto) --- */
+    --color-fondo-principal: #305C5E;        /* Fondo de la pantalla y la Navbar */
+    --color-tarjeta-fondo: #ffffff;          /* Fondo de la tarjeta principal (Formulario) */
+    --color-input-fondo: #ebebeb;            /* Fondo de los campos de texto e inputs */
+    --color-texto-principal: #a7a7a7;        /* Color del texto dentro de los inputs */
+    --color-texto-secundario: #666666;       /* Color del texto de ayuda (placeholder) y footer */
+    --color-titulo-contrato: #533957;        /* Color del título "Contrato #" */
+    --color-marca-footer: #533957;           /* Color del nombre 'Algoritmo' en el footer */
+    --color-icono-input: #333333;            /* Color de los iconos a la izquierda del input (ej. camión) */
+    
+    /* Variables de Texto y Línea para las Etiquetas de Sección (Ej: 'Datos de Vehículo') */
+    --color-seccion-texto: rgb(100, 100, 100); /* Color del texto de la etiqueta de sección */
+    --color-seccion-linea: rgba(190, 190, 190, 0.4); /* Color de la línea inferior (transparente) */
+    
+    --box-shadow-tarjeta: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta principal */
+}
+
+/*
+|=================================================================================================|
+| --- 2. BLOQUE DE MODO OSCURO ---
+|   Propósito: Sobrescribir los colores de las variables cuando el sistema operativo esté en tema oscuro.
+|=================================================================================================|
+*/
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-fondo-principal: #1D3535; 
+        --color-tarjeta-fondo: #454c52; 
+        --color-input-fondo: #5d6d7e; 
+        --color-texto-principal: #f5f5f5; 
+        --color-texto-secundario: #cacaca; 
+        --color-titulo-contrato: #d8c0ff; /* Morado claro para el título */
+        --color-marca-footer: #f5f5f5; 
+        --color-icono-input: #ffffff; 
+        
+        --color-seccion-texto: rgb(150, 150, 150); 
+        --color-seccion-linea: rgba(80, 80, 80, 0.4); 
+        
+        --box-shadow-tarjeta: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+}
+
+
+/*
+|=================================================================================================|
+| --- 3. ESTILOS BASE Y MAQUETACIÓN ---
+|=================================================================================================|
+*/
+
+/* Reset Básico y Transiciones */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; 
+    /* Suaviza el cambio de color entre modo claro y oscuro */
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+/* Evita que el texto de lectura sea seleccionable (títulos, etiquetas, footer) */
+.main-title, .section-label, .navbar p, .footer p {
+    user-select: none;
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+}
+
+/* Fondo principal de toda la página */
+html, body { 
+    background-color: var(--color-fondo-principal); 
+}
+
+body {
+    color: var(--color-texto-principal); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- BARRA SUPERIOR (Navbar) --- */
+.navbar {
+    width: 100%;
+    background-color: var(--color-fondo-principal); 
+    padding: 10px 20px; 
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    color: var(--color-texto-principal); 
+    font-size: 20px; 
+    cursor: pointer;
+}
+
+/* Estilo del texto "Algoritmo" en la Navbar */
+.navbar p {
+    color: #521fa5; /* Color morado fijo */
+    font-size: 18px; 
+    margin-left: 10px; 
+}
+
+/* --- CONTENEDOR TIPO MÓVIL (La "tarjeta" principal) --- */
+.container {
+    width: 100%;
+    max-width: 450px; 
+    background-color: var(--color-tarjeta-fondo); 
+    padding: 15px; 
+    padding-bottom: 25px; 
+    /* APLICANDO CAMBIO 1: Reducir de 3px a 1px */
+    margin-top: 1px; 
+    border-radius: 8px; 
+    box-shadow: var(--box-shadow-tarjeta); 
+}
+
+/* --- TÍTULOS Y ETIQUETAS --- */
+.main-title {
+    text-align: center;
+    font-size: 22px;
+    /* APLICANDO CAMBIO 2: Reducir de 5px a 1px */
+    margin-bottom: 1px; 
+    color: var(--color-titulo-contrato); 
+    font-weight: 600;
+}
+
+/* --- SECCIÓN DE ETIQUETAS Y LÍNEA DIVISORIA ('Datos de Vehículo', etc.) --- */
+.section-label {
+    display: block;
+    text-align: center; 
+    
+    color: var(--color-seccion-texto); 
+    font-size: 14px; 
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px; 
+    
+    /* APLICANDO CAMBIO 3: Reducir margen superior de 10px a 5px */
+    margin: 5px 0 5px 0; 
+    padding-bottom: 3px; 
+
+    /* Línea inferior delgada y transparente */
+    border-bottom: 1px solid var(--color-seccion-linea);
+}
+
+
+/* --- INPUTS Y CAMPOS --- */
+.custom-input {
+    width: 100%;
+    background-color: var(--color-input-fondo); 
+    border: none;
+    border-radius: 5px; 
+    padding: 12px; 
+    color: var(--color-texto-principal); 
+    font-size: 15px;
+    margin-bottom: 3px; /* Margen muy compacto entre inputs */
+    outline: none;
+    
+    /* Permite la selección de texto dentro del campo */
+    user-select: auto;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+}
+
+/* Estilo del texto de ayuda dentro del campo (placeholder) */
+.custom-input::placeholder {
+    color: var(--color-texto-secundario); 
+    opacity: 1; 
+}
+
+.custom-input:focus {
+    background-color: var(--color-input-fondo); 
+    box-shadow: 0 0 0 2px #007bff; 
+}
+
+/* Contenedor que alinea el ícono y el input */
+.input-wrapper {
+    position: relative;
+    margin-bottom: 5px; 
+}
+
+/* Icono a la izquierda del campo (ej. camión, tag) */
+.icon-left {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    /* APLICANDO CAMBIO 4: Ajuste para evitar solapamiento del ícono con la etiqueta */
+    transform: translateY(-45%); 
+    color: var(--color-icono-input); 
+    font-size: 18px; 
+}
+
+/* NUEVO ESTILO: Adorno a la derecha (para la flecha de "ver más") */
+.adornment-right {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-titulo-contrato); /* Usamos el color del título para el adorno */
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.adornment-right:hover {
+    color: #007bff;
+}
+
+
+/* --- BOTONES DE ACCIÓN --- */
+.action-buttons {
+    margin-top: 10px; 
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+}
+
+.btn {
+    width: 100%;
+    padding: 14px; 
+    border: none;
+    border-radius: 5px; 
+    font-size: 15px; 
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s;
+    
+    background-color: #007bff; /* Azul primario */
+    color: white;
+}
+
+.btn:hover {
+    background-color: #0056b3; 
+}
+
+/* --- PIE DE PÁGINA (FOOTER) --- */
+.footer {
+    margin-top: 10px; 
+    text-align: center;
+    font-size: 14px;
+    color: var(--color-texto-secundario); 
+}
+
+/* Párrafo del footer (incluye el ajuste manual de line-height) */
+.footer p {
+    line-height: 1.8; /* Se redujo el espaciado para mejor legibilidad */
+    margin: 0; 
+}
+
+.brand-name {
+    color: var(--color-marca-footer);
+    font-weight: 500; /* CORREGIDO: Eliminado el espacio entre 'font-' y 'weight' */
+}
