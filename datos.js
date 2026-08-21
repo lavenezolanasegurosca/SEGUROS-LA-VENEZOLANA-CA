@@ -858,29 +858,22 @@ const baseDeDatos = {
         pdfCarnet: "CONTRATOS/68538 VICTOR Carnet.pdf"
     },
   "074535": { 
-    "carga": "MOTO PARTICULAR",
-    "vigencia": "16/05/2027", 
-    "asegurado": { 
-        "nombre": "JOSE RAFAEL OROPEZA MAYORA",
-        "cedula": "V-25.969.880",
-        "telefono": "0412-0000000", 
-        "direccion": "LA GUAIRA, ESTADO LA GUAIRA"
-    },
-    "vehiculo": {
-        "codigo": "81J41G1FXSG002518",
-        "tipo": "MOTO",
-        "marca": "TORO",
-        "modelo": "REX TR250/250 CC",
-        "placa": "AM7C57G",
-        "color": "BLANCO Y AZUL",
-        "anio": "2025",
-        "ejes": "2"
-    },
-    "carnet": {
-        "marca": "TORO",
-        "modelo": "REX TR250/250 CC",
-        "anio": "2025"
-    },
-    "pdfContrato": "CONTRATOS/contrato_250109596889.pdf"
-}
+      carga: "MOTOCICLETA",
+      vehiculo: {
+          codigo: "81J41G1FXSG002518",
+          tipo: "MOTOCICLETA",
+          placa: "AM7C57G",
+          carroceria: "ENDURO",
+          color: "BLANCO Y AZUL",
+          ejes: "2"
+      },
+      carnet: {
+          placa: "AM7C57G",
+          marca: "TORO",
+          modelo: "REX TR250/250 CC",
+          anio: "2025"
+      },
+      pdfContrato: "CONTRATOS/contrato_074535.pdf",
+      pdfCarnet: "CONTRATOS/074535 Carnet.pdf"
+  }
 };
